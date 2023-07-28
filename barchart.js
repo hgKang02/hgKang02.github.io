@@ -9,7 +9,7 @@ function main() {
 
     var g = svg.append("g").attr("transform" , "translate(" +100+ ")");
 
-    d3.csv("../death_by_country.csv").then(function(data) {
+    d3.csv("../gun-deaths-by-country-2023.csv").then(function(data) {
         xScale.domain(data.map(function(d) {return d.country;}));
         yScale.domain([0, d3.max(data, function(d) {
             return d.totalDeaths;
