@@ -26,6 +26,6 @@ function main() {
                 .attr("x", function(d) {return xScale(d.country);})
                 .attr("y", function(d) {return yScale(d.totalDeaths);})
                 .attr("width", xScale.bandwidth())
-                .attr("height", function(d) {return height - yScale(d.country);});
+                .attr("height", function(d) {return height - yScale(d.totalDeaths);});
     });
 } 
