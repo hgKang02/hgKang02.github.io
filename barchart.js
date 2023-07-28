@@ -15,6 +15,7 @@ function main() {
             return d.totalDeaths;
         })]);
 
+        g.append("g").attr('transform', 'translate(0' + height + ')').call(d3.axisBottom(xScale))
         g.append("g").call(d3.axisLeft(yScale).tickFormat(function(d) {
             return "death: " + d; 
         }).ticks(10));
