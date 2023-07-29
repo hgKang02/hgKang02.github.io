@@ -94,7 +94,9 @@ svg.selectAll("line")
   .duration(2000)
   .attr("x1", function(d) { return x(d.Value); })
 
-})
+}).catch(function(error) {
+  console.log("Error loading the CSV file:", error);
+});
 </script>
 </body>
 </html>
