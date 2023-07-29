@@ -25,7 +25,7 @@
 
 <script>
 const margin = {top: 20, right: 30, bottom: 40, left: 100},
-    width = 700,
+    width = 1000,
     height = 400;
 
 // append the svg object to the body of the page
@@ -41,7 +41,7 @@ const svg = d3.select("#lollipop")
 d3.csv("https://raw.githubusercontent.com/hgKang02/hgKang02.github.io/master/CS416_narrative_visualization/top10.csv").then( function(data) {
 // Add X axis
 const x = d3.scaleLinear()
-  .domain([0, 13000])
+  .domain([0, 52000])
   .range([ 0, width]);
 svg.append("g")
   .attr("transform", `translate(0, ${height})`)
