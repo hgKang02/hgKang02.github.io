@@ -43,7 +43,9 @@ const svg = d3.select("#lollipop")
 // Parse the Data
 d3.csv("https://raw.githubusercontent.com/hgKang02/hgKang02.github.io/master/CS416_narrative_visualization/gun-deaths-by-country-2023.csv").then( function(data) {
 console.log(data)
-
+    data.forEach(function(d) {
+        d.Value = +d.Value;
+    });
 // Add X axis
 const x = d3.scaleLinear()
   .domain([0, 52000])
