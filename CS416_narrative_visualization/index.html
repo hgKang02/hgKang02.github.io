@@ -35,18 +35,18 @@ As shown United states is ranked the second among other countries.
 <style>
   .annotation {
     position: absolute;
-    top: 430px;
-    left: 750px;
+    top: 490px;
+    left: 800px;
     color: red;
     transform: translate(-50%, -50%);
   }
   .arrow{
     position: absolute;
-    top: 370px;
-    left: 650px;
+    top: 480px;
+    left: 800px;
     color: red;
-    width: '200px';
-    height: '200px';
+    width: '300px';
+    height: '300px';
     transform: translate(-50%, -50%);
   }
 </style>
@@ -106,7 +106,7 @@ svg.selectAll("mycircle")
     .attr("cy", function(d) { return y(d.country); })
     .attr("r", "7")
     .style("fill", function(d) {
-        if (d.country = "United States") {
+        if (d.country == "United States") {
             return "red"
         } else {
             return "blue"
