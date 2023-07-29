@@ -42,11 +42,6 @@ var svg = d3.select("#lollipop")
 // Parse the Data
 d3.csv("https://raw.githubusercontent.com/hgKang02/hgKang02.github.io/master/gun-deaths-by-country-2023.csv", function(data) {
 
-// sort data
-data.sort(function(b, a) {
-  return a.totalDeaths - b.totalDeaths;
-});
-
 // Add X axis
 var x = d3.scaleLinear()
   .domain([0, 13000])
