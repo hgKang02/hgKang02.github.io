@@ -23,13 +23,14 @@
 </div>
 
 <div id="llolipop">
+    <svg width = 1000 height = 1000></svg>
 </div>
     <p>Testing</p>
 
 <script>
-const margin = {top: 10, right: 30, bottom: 40, left: 100},
-    width = 460 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
+const margin = {top: 20, right: 30, bottom: 40, left: 100},
+    width = 700,
+    height = 400;
 
 // append the svg object to the body of the page
 const svg = d3.select("#lollipop")
@@ -41,7 +42,7 @@ const svg = d3.select("#lollipop")
           `translate(${margin.left}, ${margin.top})`);
 
 // Parse the Data
-d3.csv("https://raw.githubusercontent.com/hgKang02/hgKang02.github.io/master/gun-deaths-by-country-2023.csv").then( function(data) {
+d3.csv("https://raw.githubusercontent.com/hgKang02/hgKang02.github.io/master/CS416_narrative_visualization/gun-deaths-by-country-2023.csv").then( function(data) {
 console.log(data)
 
 // Add X axis
