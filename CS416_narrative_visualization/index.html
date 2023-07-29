@@ -29,7 +29,7 @@ const svg = d3.select("#lollipop")
           `translate(${margin.left}, ${margin.top})`);
 
 // Parse the Data
-d3.csv("https://raw.githubusercontent.com/hgKang02/hgKang02.github.io/master/CS416_narrative_visualization/gun-deaths-by-country-2023.csv").then( function(data) {
+d3.csv("https://raw.githubusercontent.com/dahyunl2/CS416_Narrative_Visualization/main/country.csv").then( function(data) {
 console.log(data)
     data.forEach(function(d) {
         d.Value = +d.Value;
