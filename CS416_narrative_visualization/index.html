@@ -10,21 +10,9 @@
 
 <body>
     <h1> Countries Ranked By Gun Death </h1>
-    <div id="text">
-        <p> The Data is from https://worldpopulationreview.com/country-rankings/gun-deaths-by-country
-        <br> According to the world population review, the number of death caused by gun has increased as time pass.
-        <br> Even though the number of death for America is ranked the second, the death rate per 100K people is ranked _____.
-        <br> For more detail about death rate click the [By Death Rate] button.
-        <br> For further information about the world population and details about the death related to gun, please visit the link above.</p>
-
-        <br>To narrow down into Domestic scale, click [Top 10 States in U.S.] button.
-        <br>Lastly, you can focuse on Illinois among other states in U.S by clicking [Gun Death Rate by year in Illinois] button. 
-        </p>
-</div>
 
 <div id="lollipop">
 </div>
-    <p>Testing</p>
 
 <script>
 const margin = {top: 20, right: 30, bottom: 40, left: 100},
@@ -48,7 +36,7 @@ console.log(data)
     });
 // Add X axis
 const x = d3.scaleLinear()
-  .domain([0, 52000])
+  .domain([0, 13000])
   .range([ 0, width]);
 svg.append("g")
   .attr("transform", `translate(0, ${height})`)
