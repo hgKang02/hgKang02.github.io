@@ -68,10 +68,15 @@ d3.csv("https://raw.githubusercontent.com/hgKang02/hgKang02.github.io/master/CS4
           .padAngle(0.01)
           .padRadius(innerRadius))
           .on("mouseover", function(event, d) {
+                tooltip.style("opacity", 1)
+                .html("Country: " + d.country+ "<br>Total Death: "+d.totalDeaths)
+                .style("left", (d3.pointer(event,this)[0]+90) + "px")
+                .style("top", (d3.pointer(event,this)[1]+300) + "px")
+            
                     // Increase the outerRadius to make the arc larger
                     d3.select(this).attr("d", d3.arc()
                         .innerRadius(innerRadius)
-                        .outerRadius(d => y(d.Deaths) + 20) // Increase the outer radius by 20
+                        .outerRadius(d => y(d.Deaths) + 100) // Increase the outer radius by 20
                         .startAngle(d => x(d.State))
                         .endAngle(d => x(d.State) + x.bandwidth())
                         .padAngle(0.01)
@@ -80,6 +85,7 @@ d3.csv("https://raw.githubusercontent.com/hgKang02/hgKang02.github.io/master/CS4
                 })
                 .on("mouseout", function(event, d) {
                     // Restore the outerRadius to its original size
+                    tooltip.style('opacity',0)
                     d3.select(this).attr("d", d3.arc()
                         .innerRadius(innerRadius)
                         .outerRadius(d => y(d.Deaths))
