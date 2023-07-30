@@ -62,21 +62,16 @@ d3.csv("https://raw.githubusercontent.com/hgKang02/hgKang02.github.io/master/CS4
       .range([innerRadius, outerRadius])   // Domain will be define later.
       .domain([0, 7000]); // Domain of Y is from 0 to the max seen in the data
 
-      
-svg.append("g")
-    .selectAll(".overlay")
-    .data(data)
-    .join("rect")
-    .attr("class", "overlay")
-    .attr("fill", "none")
-    .attr("pointer-events", "all") // Allow the overlay to capture mouse events
-    .attr("x", function(d) {
-        return x(d.State);
-    })
-    .attr("width", x.bandwidth())
-    .attr("y", -outerRadius) // Place the overlay above the bars
-    .attr("height", outerRadius * 2)
-    .style("opacity", 0); // Make the overlay invisible initially
+
+  // Use force simulation to space out the bars
+  const simulation = d3.forceSimulation(data)
+    .force("x", d3.forceX().strength(0.1).x(d => x(d.State)))
+    .force("y", d3.forceY().strength(0.1).y(d => y(d.Deaths)))
+    .force("collide", d3.forceCollide().radius(x.bandwidth() / 2))
+    .stop();
+
+  for (let i = 0; i < 120; ++i) simulation.tick();
+
 
   // Add the bars
     svg.append("g")
