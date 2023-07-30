@@ -10,12 +10,16 @@
     <h1> Firearm Violence By States </h1>
     <div id="button">
         <button onclick="window.location.href='https://hgKang02.github.io/CS416_narrative_visualization/';">Top 15 Countries</button>
-        <button onclick="window.location.href='https://hgKang02.github.io/CS416_narrative_visualization/states.html';">Top 10 States in U.S.</button>
+        <button onclick="window.location.href='https://hgKang02.github.io/CS416_narrative_visualization/states.html';">U.S. States</button>
+        <button onclick="window.location.href='https://hgKang02.github.io/CS416_narrative_visualization/last.html';">Texas Details</button>
+
     </div>
     <p> The chart used the data from https://www.cdc.gov/nchs/pressroom/sosmap/firearm_mortality/firearm.htm. You can see more details by visiting the link.
     <br> 
-    <br> This page's focus is to show the firearm violence among United States. As the result, Texas had most cases with total 4613 deaths.
-    <br> By clicking the bar chart, you can see more detail about total death with the ratio.
+    <br> This page focuses on showing the number of each states' firearm violence cases. 
+    <br> The states are plotted in alphabetic order rotating clockwise.
+    <br> Texas had the most cases with total 4613 deaths and the rate of 15.6 per 100K. 
+    <br> By clicking the bar chart, you can see more details about total death with the ratio.
 
     <style>
     .tooltip {
@@ -39,7 +43,7 @@ const svg = d3.select("#my_dataviz")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
-    .attr("transform", `translate(${width/2+margin.left}, ${height/2+margin.top - 30})`);
+    .attr("transform", `translate(${width/2+margin.left}, ${height/2+margin.top - 55})`);
 
 d3.csv("https://raw.githubusercontent.com/hgKang02/hgKang02.github.io/master/CS416_narrative_visualization/states.csv").then( function(data) {
 
