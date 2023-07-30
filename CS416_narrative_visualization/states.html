@@ -14,6 +14,8 @@
     </div>
     <p> The chart used the data from https://www.cdc.gov/nchs/pressroom/sosmap/firearm_mortality/firearm.htm. You can see more details by visiting the link.
     <br> 
+    <br> This page's focus is to show the firearm violence among United States. As the result, Texas had most cases with total 4613 deaths.
+    <br> By clicking the bar chart, you can see more detail about total death with the ratio.
 
     <style>
     .tooltip {
@@ -26,7 +28,7 @@
 
 // set the dimensions and margins of the graph
 const margin = {top: 80, right: 0, bottom: 0, left: 0},
-    width = 1000 - margin.left - margin.right,
+    width = 900 - margin.left - margin.right,
     height = 900 - margin.top - margin.bottom,
     innerRadius = 120,
     outerRadius = Math.min(width, height) / 2;   
@@ -60,7 +62,7 @@ d3.csv("https://raw.githubusercontent.com/hgKang02/hgKang02.github.io/master/CS4
       .domain(data.map(d => d.State)); // The domain of the X axis is the list of states.
   const y = d3.scaleRadial()
       .range([innerRadius, outerRadius])   // Domain will be define later.
-      .domain([0, 7000]); // Domain of Y is from 0 to the max seen in the data
+      .domain([0, 5000]); // Domain of Y is from 0 to the max seen in the data
 
 
   // Use force simulation to space out the bars
@@ -140,7 +142,7 @@ svg.append("g")
 
       // Show tooltip
       tooltip.style("opacity", 1)
-        .html("State: " + d.State + "<br>Total Death: " + d.Deaths)
+        .html("State: " + d.State + "<br>Total Death: " + d.Deaths + "<br> Rate: " + d.Rate)
         .style("left", (event.pageX + 10) + "px")
         .style("top", (event.pageY - 20) + "px");
     })
