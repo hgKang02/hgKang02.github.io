@@ -23,9 +23,9 @@
 
 // set the dimensions and margins of the graph
 const margin = {top: 100, right: 0, bottom: 0, left: 0},
-    width = 800 - margin.left - margin.right,
-    height = 800 - margin.top - margin.bottom,
-    innerRadius = 90,
+    width = 1000 - margin.left - margin.right,
+    height = 1000 - margin.top - margin.bottom,
+    innerRadius = 120,
     outerRadius = Math.min(width, height) / 2;   
 
 // append the svg object
@@ -64,7 +64,13 @@ d3.csv("https://raw.githubusercontent.com/hgKang02/hgKang02.github.io/master/CS4
     .selectAll("path")
     .data(data)
     .join("path")
-      .attr("fill", "#69b3a2")
+      .attr("fill", function(d) {
+        if (d.State == "Texas") {
+            return "red"
+        } else {
+            return "#69b3a2"
+        }
+      })
       .attr("d", d3.arc()     // imagine your doing a part of a donut plot
           .innerRadius(innerRadius)
           .outerRadius(d => y(d['Deaths']))
