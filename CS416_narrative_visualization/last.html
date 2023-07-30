@@ -98,23 +98,26 @@ d3.csv("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/da
     function update(selectedGroup) {
 
       // Create new data with the selection?
-      const dataFilter = data.map(function(d){return {year: d.Year, value:d[selectedGroup]} })
+        const dataFilter = data.map(function (d) {
+            return { Year: +d.Year, Deaths: +d[selectedGroup] }; // Use the correct property names
+        });
 
-      // Give these new data to update line
-      line
-          .datum(dataFilter)
-          .transition()
-          .duration(1000)
-          .attr("d", d3.line()
-            .x(d => x(+d.year))
-            .y(d => y(+d.value))
-          )
-      dot
-        .data(dataFilter)
-        .transition()
-        .duration(1000)
-          .attr("cx", d => x(+d.year))
-          .attr("cy", d => y(+d.value))
+        // Give these new data to update line
+        line
+            .datum(dataFilter)
+            .transition()
+            .duration(1000)
+            .attr("d", d3.line()
+            .x(d => x(d.Year)) // Use "Year" here
+            .y(d => y(d.Deaths)) // Use "Deaths" here
+            );
+
+        dot
+            .data(dataFilter)
+            .transition()
+            .duration(1000)
+            .attr("cx", d => x(d.Year)) // Use "Year" here
+            .attr("cy", d => y(d.Deaths)); // Use "Deaths" here
     }
 
     // When the button is changed, run the updateChart function
