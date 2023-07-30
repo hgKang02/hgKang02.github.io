@@ -70,8 +70,8 @@ d3.csv("https://raw.githubusercontent.com/hgKang02/hgKang02.github.io/master/CS4
           .on("mouseover", function(event, d) {
                 tooltip.style("opacity", 1)
                 .html("State: " + d.State+ "<br>Total Death: "+d.Deaths)
-                .style("left", (d3.pointer(event,this)[0]+90) + "px")
-                .style("top", (d3.pointer(event,this)[1]+300) + "px")
+                .style("left", (event.pageX + 90) + "px")
+                .style("top", (event.pageY + 100) + "px")
                 console.log(d);
                     // Increase the outerRadius to make the arc larger
                     d3.select(this).attr("d", d3.arc()
