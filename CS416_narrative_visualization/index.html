@@ -11,7 +11,7 @@
     <h1> Countries Ranked By Gun Death </h1>
     <div id="button">
         <button onclick="window.location.href='https://hgKang02.github.io/CS416_narrative_visualization/';">Top 15 Countries</button>
-        <button onclick="window.location.href='https://hgKang02.github.io/CS416_narrative_visualization/states.html';">Top 10 States in U.S.</button>
+        <button onclick="window.location.href='https://hgKang02.github.io/CS416_narrative_visualization/states.html';">U.S. States</button>
         <button onclick="window.location.href='https://hgKang02.github.io/CS416_narrative_visualization/last.html';">Texas Details</button>
     </div>
     <div id="text">
@@ -21,11 +21,9 @@
         <p>
         <br> According to the data from world population, the total death caused by gun for the United States is ranked the second.
         <br> Even though the number of death for America is ranked the second, the death rate per 100K people is ranked out of top 15.
-        <br> For more detail about death rate click the [By Death Rate] button.
 
-
-        <br> To narrow down into Domestic scale, click [Top 10 States in U.S.] button.
-        <br> Lastly, you can focuse on Illinois among other states in U.S by clicking [Gun Death Rate by year in Illinois] button. 
+        <br> To narrow down into United States, click [U.S. States] button.
+        <br> Moreover, gun violence details for Texas which is ranked the first among the states can be seen by clicking [Texas Details] button.
         </p>
 </div>
 <div class = "annotation">
@@ -56,6 +54,10 @@ As shown United states is ranked the second among other countries.
     transform: translate(-50%, -50%);
     font-size: 48px;
   }
+    .tooltip {
+        text-wrap: normal;
+        font-size: 12px;
+    }
 </style>
 <div id="lollipop">
 </div>
@@ -148,12 +150,12 @@ svg.selectAll("mycircle")
 // Change the X coordinates of line and circle
 svg.selectAll("circle")
   .transition()
-  .duration(2000)
+  .duration(1600)
   .attr("cx", function(d) { return x(d.totalDeaths); })
 
 svg.selectAll("line")
   .transition()
-  .duration(2000)
+  .duration(1600)
   .attr("x1", function(d) { return x(d.totalDeaths); })
 
 }).catch(function(error) {

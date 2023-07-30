@@ -1,125 +1,133 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-    <script src="https://d3js.org/d3.v6.js"></script>
-    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+  <meta charset="utf-8">
+  <script src="https://d3js.org/d3.v6.js"></script>
+  <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
 </head>
 <body>
-    <h1> Gun Violence for Texas </h1>
+  <h1>Gun Violence for Texas</h1>
 
-    <div id="button">
-        <button onclick="window.location.href='https://hgKang02.github.io/CS416_narrative_visualization/';">Top 15 Countries</button>
-        <button onclick="window.location.href='https://hgKang02.github.io/CS416_narrative_visualization/states.html';">U.S. States</button>
-        <button onclick="window.location.href='https://hgKang02.github.io/CS416_narrative_visualization/last.html';">Texas Details</button>
-        
-    </div>
-    <select id="selectButton"></select>
-    <style>
-        .tooltip {
-        text-wrap: normal;
-        font-size: 12px;
+  <div id="button">
+    <button onclick="window.location.href='https://hgKang02.github.io/CS416_narrative_visualization/';">Top 15 Countries</button>
+    <button onclick="window.location.href='https://hgKang02.github.io/CS416_narrative_visualization/states.html';">U.S. States</button>
+    <button onclick="window.location.href='https://hgKang02.github.io/CS416_narrative_visualization/last.html';">Texas Details</button>
+  </div>
+
+  <select id="selectButton"></select>
+
+  <style>
+    .tooltip {
+      text-wrap: normal;
+      font-size: 12px;
     }
-    </style>
-    <div>
-        <input type="radio" name="rates" value="death"> Death Rate<br>
-        <input type="radio" name="rates" value="suicide"> Suicide Rate<br>
-        <input type="radio" name="rates" value="homicide"> Homicide Rate<br>
-    </div>
+  </style>
 
-    <div id = "my_dataviz">
+  <div id="my_dataviz"></div>
 
+  <script>
+    var margin = { top: 10, right: 100, bottom: 30, left: 30 },
+      width = 600,
+      height = 600;
 
-<script>
+    // append the svg object to the body of the page
+    var svg = d3
+      .select("#my_dataviz")
+      .append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-var margin = {top: 10, right: 100, bottom: 30, left: 30},
-    width = 600,
-    height = 600;
+    d3.csv("https://raw.githubusercontent.com/hgKang02/hgKang02.github.io/master/CS416_narrative_visualization/last.csv").then(function (data) {
+      var allGroup = ["Deaths", "Suicide", "Homicide"];
 
-// append the svg object to the body of the page
-var svg = d3.select("#my_dataviz")
-  .append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-  .append("g")
-    .attr("transform",
-          "translate(" + margin.left + "," + margin.top + ")");
+      d3.select("#selectButton")
+        .selectAll("myOptions")
+        .data(allGroup)
+        .enter()
+        .append("option")
+        .text(function (d) {
+          return d;
+        })
+        .attr("value", function (d) {
+          return d;
+        });
 
-d3.csv("https://raw.githubusercontent.com/hgKang02/hgKang02.github.io/master/CS416_narrative_visualization/last.csv", function(data) {
+      var x = d3.scaleLinear().domain([0, 10]).range([0, width]);
+      svg
+        .append("g")
+        .attr("transform", "translate(0," + height + ")")
+        .call(d3.axisBottom(x));
 
-    var allGroup = ["Deaths", "Suicide", "Homicide"]
+      var y = d3.scaleLinear().domain([0, 20]).range([height, 0]);
+      svg.append("g").call(d3.axisLeft(y));
 
-    d3.select("#selectButton")
-      .selectAll('myOptions')
-     	.data(allGroup)
-      .enter()
-    	.append('option')
-      .text(function (d) { return d; }) 
-      .attr("value", function (d) { return d; }) 
-
-    var x = d3.scaleLinear()
-      .domain([0,10])
-      .range([ 0, width ]);
-    svg.append("g")
-      .attr("transform", "translate(0," + height + ")")
-      .call(d3.axisBottom(x));
-
-    var y = d3.scaleLinear()
-      .domain( [0,20])
-      .range([ height, 0 ]);
-    svg.append("g")
-      .call(d3.axisLeft(y));
-
-    var line = svg
-      .append('g')
-      .append("path")
+      var line = svg
+        .append("g")
+        .append("path")
         .datum(data)
         .attr("d", d3.line()
-          .x(function(d) { return x(+d.Year) })
-          .y(function(d) { return y(+d.Deaths) })
+          .x(function (d) {
+            return x(+d.Year);
+          })
+          .y(function (d) {
+            return y(+d.Deaths);
+          })
         )
         .attr("stroke", "black")
         .style("stroke-width", 4)
-        .style("fill", "none")
+        .style("fill", "none");
 
-    var dot = svg
-      .selectAll('circle')
-      .data(data)
-      .enter()
-      .append('circle')
-        .attr("cx", function(d) { return x(+d.Year) })
-        .attr("cy", function(d) { return y(+d.Deaths) })
+      var dot = svg
+        .selectAll("circle")
+        .data(data)
+        .enter()
+        .append("circle")
+        .attr("cx", function (d) {
+          return x(+d.Year);
+        })
+        .attr("cy", function (d) {
+          return y(+d.Deaths);
+        })
         .attr("r", 7)
-        .style("fill", "#69b3a2")
+        .style("fill", "#69b3a2");
 
+      function update(selectedGroup) {
+        var dataFilter = data.map(function (d) {
+          return { year: d.Year, value: d[selectedGroup] };
+        });
 
-    function update(selectedGroup) {
-
-
-      var dataFilter = data.map(function(d){return {year: d.Year, value: d[selectedGroup]} })
-
-      line
+        line
           .datum(dataFilter)
           .transition()
           .duration(1000)
           .attr("d", d3.line()
-            .x(function(d) { return x(+d.year) })
-            .y(function(d) { return y(+d.value) })
-          )
-      dot
-        .data(dataFilter)
-        .transition()
-        .duration(1000)
-          .attr("cx", function(d) { return x(+d.year) })
-          .attr("cy", function(d) { return y(+d.value) })
-    }
+            .x(function (d) {
+              return x(+d.year);
+            })
+            .y(function (d) {
+              return y(+d.value);
+            })
+          );
 
-    d3.select("#selectButton").on("change", function(d) {
-        var selectedOption = d3.select(this).property("value")
-        update(selectedOption)
-    })
+        dot
+          .data(dataFilter)
+          .transition()
+          .duration(1000)
+          .attr("cx", function (d) {
+            return x(+d.year);
+          })
+          .attr("cy", function (d) {
+            return y(+d.value);
+          });
+      }
 
-})
-</script>
+      d3.select("#selectButton").on("change", function (d) {
+        var selectedOption = d3.select(this).property("value");
+        update(selectedOption);
+      });
+    });
+  </script>
 </body>
 </html>
