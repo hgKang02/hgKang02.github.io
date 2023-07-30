@@ -25,12 +25,24 @@
 
   <div id="my_dataviz"></div>
 
-  <script>
+<script>
+    var tooltip = d3.select("#my_dataviz")
+    .append("div")
+    .style("opacity", 0)
+    .attr("class", "tooltip")
+    .style("position", 'absolute')
+    .style('text-align','center')
+    .style('width','200px')
+    .style('height','50px')
+    .style("background-color", "white")
+    .style("border", "solid")
+    .style("border-width", "1px")
+    .style("border-radius", "6px")
 
-// set the dimensions and margins of the graph
+
 const margin = {top: 10, right: 100, bottom: 30, left: 30},
-    width = 460 - margin.left - margin.right,
-    height = 400 - margin.top - margin.bottom;
+    width = 600,
+    height = 800;
 
 // append the svg object to the body of the page
 const svg = d3.select("#my_dataviz")
@@ -43,7 +55,6 @@ const svg = d3.select("#my_dataviz")
 //Read the data
 d3.csv("https://raw.githubusercontent.com/hgKang02/hgKang02.github.io/master/CS416_narrative_visualization/last.csv").then(function(data) {
 
-    // List of groups (here I have one group per column)
     const allGroup = ["Deaths", "Suicide", "Homicide"]
 
     // add the options to the button
@@ -52,10 +63,10 @@ d3.csv("https://raw.githubusercontent.com/hgKang02/hgKang02.github.io/master/CS4
      	.data(allGroup)
       .enter()
     	.append('option')
-      .text(d => d) // text showed in the menu
-      .attr("value", d => d) // corresponding value returned by the button
+      .text(d => d) 
+      .attr("value", d => d) 
 
-    // Add X axis --> it is a date format
+    
     const x = d3.scaleLinear()
       .domain([2010, 2019])
       .range([ 0, width ]);
@@ -70,7 +81,6 @@ d3.csv("https://raw.githubusercontent.com/hgKang02/hgKang02.github.io/master/CS4
     svg.append("g")
       .call(d3.axisLeft(y));
 
-    // Initialize line with group a
     const line = svg
       .append('g')
       .append("path")
@@ -83,7 +93,7 @@ d3.csv("https://raw.githubusercontent.com/hgKang02/hgKang02.github.io/master/CS4
         .style("stroke-width", 4)
         .style("fill", "none")
 
-    // Initialize dots with group a
+
     const dot = svg
       .selectAll('circle')
       .data(data)
@@ -92,39 +102,46 @@ d3.csv("https://raw.githubusercontent.com/hgKang02/hgKang02.github.io/master/CS4
         .attr("cy", d => y(+d.Deaths))
         .attr("r", 7)
         .style("fill", "#69b3a2")
+        .on("click", function(event, d) {
+            const clickedBar = d3.select(this);
+            tooltip.style("opacity", 1)
+        .html("Year: " + d.Year + "<br>Rate: " + d.Deaths)
+        .style("left", (event.pageX + 10) + "px")
+        .style("top", (event.pageY - 20) + "px");
+    })
+    .on("mouseout", function(event, d) {
+      tooltip.style('opacity', 0);
+    });
 
 
-    // A function that update the chart
     function update(selectedGroup) {
 
-      // Create new data with the selection?
         const dataFilter = data.map(function (d) {
-            return { Year: +d.Year, Deaths: +d[selectedGroup] }; // Use the correct property names
+            return { Year: +d.Year, Deaths: +d[selectedGroup] }; 
         });
 
-        // Give these new data to update line
         line
             .datum(dataFilter)
             .transition()
             .duration(1000)
             .attr("d", d3.line()
-            .x(d => x(d.Year)) // Use "Year" here
-            .y(d => y(d.Deaths)) // Use "Deaths" here
+            .x(d => x(d.Year)) 
+            .y(d => y(d.Deaths)) 
             );
 
         dot
             .data(dataFilter)
             .transition()
             .duration(1000)
-            .attr("cx", d => x(d.Year)) // Use "Year" here
-            .attr("cy", d => y(d.Deaths)); // Use "Deaths" here
+            .attr("cx", d => x(d.Year)) 
+            .attr("cy", d => y(d.Deaths)); 
     }
 
-    // When the button is changed, run the updateChart function
+    
     d3.select("#selectButton").on("change", function(event, d) {
-        // recover the option that has been chosen
+    
         let selectedOption = d3.select(this).property("value")
-        // run the updateChart function with this selected option
+    
         update(selectedOption)
     })
 
