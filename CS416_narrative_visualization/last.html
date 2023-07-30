@@ -99,7 +99,7 @@ d3.csv("https://raw.githubusercontent.com/hgKang02/hgKang02.github.io/master/CS4
 
       // Create new data with the selection?
         const dataFilter = data.map(function (d) {
-            return { Year: +d.Year, Deaths: +d[selectedGroup] }; // Use the correct property names
+            return { year: +d.Year, deaths: +d[selectedGroup] }; // Use the correct property names
         });
 
         // Give these new data to update line
@@ -108,16 +108,16 @@ d3.csv("https://raw.githubusercontent.com/hgKang02/hgKang02.github.io/master/CS4
             .transition()
             .duration(1000)
             .attr("d", d3.line()
-            .x(d => x(d.Year)) // Use "Year" here
-            .y(d => y(d.Deaths)) // Use "Deaths" here
+            .x(d => x(d.year)) // Use "Year" here
+            .y(d => y(d.deaths)) // Use "Deaths" here
             );
 
         dot
             .data(dataFilter)
             .transition()
             .duration(1000)
-            .attr("cx", d => x(d.Year)) // Use "Year" here
-            .attr("cy", d => y(d.Deaths)); // Use "Deaths" here
+            .attr("cx", d => x(d.year)) // Use "Year" here
+            .attr("cy", d => y(d.deaths)); // Use "Deaths" here
     }
 
     // When the button is changed, run the updateChart function
