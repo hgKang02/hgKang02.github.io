@@ -44,7 +44,7 @@ const svg = d3.select("#my_dataviz")
 d3.csv("https://raw.githubusercontent.com/hgKang02/hgKang02.github.io/master/CS416_narrative_visualization/last.csv").then(function(data) {
 
     // List of groups (here I have one group per column)
-    const allGroup = ["valueA", "valueB", "valueC"]
+    const allGroup = ["Deaths", "Suicide", "Homicide"]
 
     // add the options to the button
     d3.select("#selectButton")
@@ -57,7 +57,7 @@ d3.csv("https://raw.githubusercontent.com/hgKang02/hgKang02.github.io/master/CS4
 
     // Add X axis --> it is a date format
     const x = d3.scaleLinear()
-      .domain([0,10])
+      .domain([2010, 2019])
       .range([ 0, width ]);
     svg.append("g")
       .attr("transform", `translate(0, ${height})`)
@@ -76,8 +76,8 @@ d3.csv("https://raw.githubusercontent.com/hgKang02/hgKang02.github.io/master/CS4
       .append("path")
         .datum(data)
         .attr("d", d3.line()
-          .x(d => x(+d.time))
-          .y(d => y(+d.valueA))
+          .x(d => x(+d.Year))
+          .y(d => y(+d.Deaths))
         )
         .attr("stroke", "black")
         .style("stroke-width", 4)
@@ -88,8 +88,8 @@ d3.csv("https://raw.githubusercontent.com/hgKang02/hgKang02.github.io/master/CS4
       .selectAll('circle')
       .data(data)
       .join('circle')
-        .attr("cx", d => x(+d.time))
-        .attr("cy", d => y(+d.valueA))
+        .attr("cx", d => x(+d.Year))
+        .attr("cy", d => y(+d.Deaths))
         .attr("r", 7)
         .style("fill", "#69b3a2")
 
@@ -98,23 +98,26 @@ d3.csv("https://raw.githubusercontent.com/hgKang02/hgKang02.github.io/master/CS4
     function update(selectedGroup) {
 
       // Create new data with the selection?
-      const dataFilter = data.map(function(d){return {time: d.time, value:d[selectedGroup]} })
+        const dataFilter = data.map(function (d) {
+            return { year: +d.Year, deaths: +d[selectedGroup] }; // Use the correct property names
+        });
 
-      // Give these new data to update line
-      line
-          .datum(dataFilter)
-          .transition()
-          .duration(1000)
-          .attr("d", d3.line()
-            .x(d => x(+d.time))
-            .y(d => y(+d.value))
-          )
-      dot
-        .data(dataFilter)
-        .transition()
-        .duration(1000)
-          .attr("cx", d => x(+d.time))
-          .attr("cy", d => y(+d.value))
+        // Give these new data to update line
+        line
+            .datum(dataFilter)
+            .transition()
+            .duration(1000)
+            .attr("d", d3.line()
+            .x(d => x(d.year)) // Use "Year" here
+            .y(d => y(d.deaths)) // Use "Deaths" here
+            );
+
+        dot
+            .data(dataFilter)
+            .transition()
+            .duration(1000)
+            .attr("cx", d => x(d.year)) // Use "Year" here
+            .attr("cy", d => y(d.deaths)); // Use "Deaths" here
     }
 
     // When the button is changed, run the updateChart function
