@@ -73,7 +73,7 @@ d3.csv("https://raw.githubusercontent.com/hgKang02/hgKang02.github.io/master/CS4
       })
       .attr("d", d3.arc()     // imagine your doing a part of a donut plot
           .innerRadius(innerRadius)
-          .outerRadius(d => y(d['Deaths']))
+          .outerRadius(outerRadius)
           .startAngle(d => x(d.State))
           .endAngle(d => x(d.State) + x.bandwidth())
           .padAngle(0.01)
