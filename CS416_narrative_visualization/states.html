@@ -73,56 +73,55 @@ d3.csv("https://raw.githubusercontent.com/hgKang02/hgKang02.github.io/master/CS4
   for (let i = 0; i < 120; ++i) simulation.tick();
 
 
-  // Add the bars
-    svg.append("g")
-    .selectAll("path")
-    .data(data)
-    .join("path")
-      .attr("fill", function(d) {
-        if (d.State == "Texas") {
-            return "red"
-        } else {
-            return "#69b3a2"
-        }
-      })
-      .attr("d", d3.arc()
-          .innerRadius(innerRadius)
-          .outerRadius(d => y(d['Deaths']))
-          .startAngle(d => x(d.State))
-          .endAngle(d => x(d.State) + x.bandwidth())
-          .padAngle(0.01)
-          .padRadius(innerRadius))
-      .on("mouseover", function(event, d) {
-            tooltip.style("opacity", 1)
-            .html("State: " + d.State+ "<br>Total Death: "+d.Deaths)
-            .style("left", (event.pageX + 10) + "px")
-            .style("top", (event.pageY - 20) + "px");
-            // Increase the outerRadius to make the arc larger
-            d3.select(this).transition() // Add smooth transition
-              .duration(100)
-              .attr("d", d3.arc()
-                  .innerRadius(innerRadius)
-                  .outerRadius(d => y(d.Deaths) + 100) // Increase the outer radius by 100
-                  .startAngle(d => x(d.State))
-                  .endAngle(d => x(d.State) + x.bandwidth())
-                  .padAngle(0.01)
-                  .padRadius(innerRadius)
-              );
-        })
-        .on("mouseout", function(event, d) {
-            tooltip.style('opacity', 0);
-            // Restore the outerRadius to its original size
-            d3.select(this).transition() // Add smooth transition
-              .duration(100)
-              .attr("d", d3.arc()
-                  .innerRadius(innerRadius)
-                  .outerRadius(d => y(d.Deaths))
-                  .startAngle(d => x(d.State))
-                  .endAngle(d => x(d.State) + x.bandwidth())
-                  .padAngle(0.01)
-                  .padRadius(innerRadius)
-              );
-        });
+svg.append("g")
+  .selectAll("path")
+  .data(data)
+  .join("path")
+    .attr("fill", function(d) {
+      if (d.State == "Texas") {
+        return "red";
+      } else {
+        return "#69b3a2";
+      }
+    })
+    .attr("d", d3.arc()
+        .innerRadius(innerRadius)
+        .outerRadius(d => y(d['Deaths']))
+        .startAngle(d => x(d.State))
+        .endAngle(d => x(d.State) + x.bandwidth())
+        .padAngle(0.01)
+        .padRadius(innerRadius))
+    .on("click", function(event, d) { // Change "mouseover" to "click"
+      if (d3.select(this).classed("clicked")) {
+        // If the bar is already clicked, reset the outerRadius to its original size
+        d3.select(this)
+          .classed("clicked", false)
+          .transition()
+          .duration(100)
+          .attr("d", d3.arc()
+            .innerRadius(innerRadius)
+            .outerRadius(d => y(d.Deaths))
+            .startAngle(d => x(d.State))
+            .endAngle(d => x(d.State) + x.bandwidth())
+            .padAngle(0.01)
+            .padRadius(innerRadius)
+          );
+      } else {
+        // If the bar is not clicked, increase the outerRadius to make the arc larger
+        d3.select(this)
+          .classed("clicked", true)
+          .transition()
+          .duration(100)
+          .attr("d", d3.arc()
+            .innerRadius(innerRadius)
+            .outerRadius(d => y(d.Deaths) + 100) // Increase the outer radius by 100
+            .startAngle(d => x(d.State))
+            .endAngle(d => x(d.State) + x.bandwidth())
+            .padAngle(0.01)
+            .padRadius(innerRadius)
+          );
+      }
+    });
 
   // Add the labels
   svg.append("g")
