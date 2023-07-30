@@ -127,6 +127,8 @@
         var selectedOption = d3.select(this).property("value");
         update(selectedOption);
       });
+    }).catch(function (error) {
+      console.error("Error loading data:", error);
     });
   </script>
 </body>
