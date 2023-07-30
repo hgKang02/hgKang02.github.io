@@ -92,9 +92,11 @@ svg.append("g")
         .padAngle(0.01)
         .padRadius(innerRadius))
     .on("click", function(event, d) { // Change "mouseover" to "click"
-      if (d3.select(this).classed("clicked")) {
+      const clickedBar = d3.select(this);
+
+      if (clickedBar.classed("clicked")) {
         // If the bar is already clicked, reset the outerRadius to its original size
-        d3.select(this)
+        clickedBar
           .classed("clicked", false)
           .transition()
           .duration(100)
@@ -107,8 +109,22 @@ svg.append("g")
             .padRadius(innerRadius)
           );
       } else {
+        // Reset all previously clicked bars
+        svg.selectAll("path.clicked")
+          .classed("clicked", false)
+          .transition()
+          .duration(100)
+          .attr("d", d3.arc()
+            .innerRadius(innerRadius)
+            .outerRadius(d => y(d.Deaths))
+            .startAngle(d => x(d.State))
+            .endAngle(d => x(d.State) + x.bandwidth())
+            .padAngle(0.01)
+            .padRadius(innerRadius)
+          );
+
         // If the bar is not clicked, increase the outerRadius to make the arc larger
-        d3.select(this)
+        clickedBar
           .classed("clicked", true)
           .transition()
           .duration(100)
@@ -121,6 +137,16 @@ svg.append("g")
             .padRadius(innerRadius)
           );
       }
+
+      // Show tooltip
+      tooltip.style("opacity", 1)
+        .html("State: " + d.State + "<br>Total Death: " + d.Deaths)
+        .style("left", (event.pageX + 10) + "px")
+        .style("top", (event.pageY - 20) + "px");
+    })
+    .on("mouseout", function(event, d) {
+      // Hide tooltip
+      tooltip.style('opacity', 0);
     });
 
   // Add the labels
