@@ -24,7 +24,7 @@
 // set the dimensions and margins of the graph
 const margin = {top: 100, right: 0, bottom: 0, left: 0},
     width = 1000 - margin.left - margin.right,
-    height = 1000 - margin.top - margin.bottom,
+    height = 900 - margin.top - margin.bottom,
     innerRadius = 120,
     outerRadius = Math.min(width, height) / 2;   
 
@@ -57,7 +57,7 @@ d3.csv("https://raw.githubusercontent.com/hgKang02/hgKang02.github.io/master/CS4
       .domain(data.map(d => d.State)); // The domain of the X axis is the list of states.
   const y = d3.scaleRadial()
       .range([innerRadius, outerRadius])   // Domain will be define later.
-      .domain([0, 14000]); // Domain of Y is from 0 to the max seen in the data
+      .domain([0, 7000]); // Domain of Y is from 0 to the max seen in the data
 
   // Add the bars
   svg.append("g")
