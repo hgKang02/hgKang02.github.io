@@ -138,8 +138,8 @@ svg.selectAll("mycircle")
           tooltip
           .style("opacity", 1)
           .html("Country: " + d.country+ "<br>Total Death: "+d.totalDeaths)
-          .style("left", (event.pageX + 40) + "px")
-          .style("top", (event.pageY + 50) + "px")
+          .style("left", (event.pageX + 10) + "px")
+          .style("top", (event.pageY - 30) + "px")
             console.log(d);
         })
         .on('mouseout',function(event, d){tooltip.style('opacity',0)})
