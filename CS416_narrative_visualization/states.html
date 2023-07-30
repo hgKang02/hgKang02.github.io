@@ -62,6 +62,22 @@ d3.csv("https://raw.githubusercontent.com/hgKang02/hgKang02.github.io/master/CS4
       .range([innerRadius, outerRadius])   // Domain will be define later.
       .domain([0, 7000]); // Domain of Y is from 0 to the max seen in the data
 
+      
+svg.append("g")
+    .selectAll(".overlay")
+    .data(data)
+    .join("rect")
+    .attr("class", "overlay")
+    .attr("fill", "none")
+    .attr("pointer-events", "all") // Allow the overlay to capture mouse events
+    .attr("x", function(d) {
+        return x(d.State);
+    })
+    .attr("width", x.bandwidth())
+    .attr("y", -outerRadius) // Place the overlay above the bars
+    .attr("height", outerRadius * 2)
+    .style("opacity", 0); // Make the overlay invisible initially
+
   // Add the bars
     svg.append("g")
     .selectAll("path")
