@@ -7,11 +7,14 @@
 </head>
 
 <body>
-    <h1> Firearm Violence By States
+    <h1> Firearm Violence By States </h1>
     <div id="button">
         <button onclick="window.location.href='https://hgKang02.github.io/CS416_narrative_visualization/';">Top 15 Countries</button>
         <button onclick="window.location.href='https://hgKang02.github.io/CS416_narrative_visualization/states.html';">Top 10 States in U.S.</button>
     </div>
+    <p> The chart used the data from https://www.cdc.gov/nchs/pressroom/sosmap/firearm_mortality/firearm.htm. You can see more details by visiting the link.
+    <br> 
+
     <style>
     .tooltip {
         text-wrap: normal;
@@ -22,7 +25,7 @@
 <script>
 
 // set the dimensions and margins of the graph
-const margin = {top: 100, right: 0, bottom: 0, left: 0},
+const margin = {top: 80, right: 0, bottom: 0, left: 0},
     width = 1000 - margin.left - margin.right,
     height = 900 - margin.top - margin.bottom,
     innerRadius = 120,
@@ -60,7 +63,7 @@ d3.csv("https://raw.githubusercontent.com/hgKang02/hgKang02.github.io/master/CS4
       .domain([0, 7000]); // Domain of Y is from 0 to the max seen in the data
 
   // Add the bars
-  svg.append("g")
+    svg.append("g")
     .selectAll("path")
     .data(data)
     .join("path")
@@ -71,41 +74,44 @@ d3.csv("https://raw.githubusercontent.com/hgKang02/hgKang02.github.io/master/CS4
             return "#69b3a2"
         }
       })
-      .attr("d", d3.arc()     // imagine your doing a part of a donut plot
+      .attr("d", d3.arc()
           .innerRadius(innerRadius)
           .outerRadius(d => y(d['Deaths']))
           .startAngle(d => x(d.State))
           .endAngle(d => x(d.State) + x.bandwidth())
           .padAngle(0.01)
           .padRadius(innerRadius))
-          .on("mouseover", function(event, d) {
-                tooltip.style("opacity", 1)
-                .html("State: " + d.State+ "<br>Total Death: "+d.Deaths)
-                .style("left", (event.pageX + 10) + "px")
-                .style("top", (event.pageY - 20) + "px")
-                console.log(d);
-                    // Increase the outerRadius to make the arc larger
-                    d3.select(this).attr("d", d3.arc()
-                        .innerRadius(innerRadius)
-                        .outerRadius(d => y(d.Deaths) + 100) // Increase the outer radius by 20
-                        .startAngle(d => x(d.State))
-                        .endAngle(d => x(d.State) + x.bandwidth())
-                        .padAngle(0.01)
-                        .padRadius(innerRadius)
-                    );
-                })
-                .on("mouseout", function(event, d) {
-                    // Restore the outerRadius to its original size
-                    tooltip.style('opacity',0);
-                    d3.select(this).attr("d", d3.arc()
-                        .innerRadius(innerRadius)
-                        .outerRadius(d => y(d.Deaths))
-                        .startAngle(d => x(d.State))
-                        .endAngle(d => x(d.State) + x.bandwidth())
-                        .padAngle(0.01)
-                        .padRadius(innerRadius)
-                    );
-                });
+      .on("mouseover", function(event, d) {
+            tooltip.style("opacity", 1)
+            .html("State: " + d.State+ "<br>Total Death: "+d.Deaths)
+            .style("left", (event.pageX + 10) + "px")
+            .style("top", (event.pageY - 20) + "px");
+            // Increase the outerRadius to make the arc larger
+            d3.select(this).transition() // Add smooth transition
+              .duration(100)
+              .attr("d", d3.arc()
+                  .innerRadius(innerRadius)
+                  .outerRadius(d => y(d.Deaths) + 100) // Increase the outer radius by 100
+                  .startAngle(d => x(d.State))
+                  .endAngle(d => x(d.State) + x.bandwidth())
+                  .padAngle(0.01)
+                  .padRadius(innerRadius)
+              );
+        })
+        .on("mouseout", function(event, d) {
+            tooltip.style('opacity', 0);
+            // Restore the outerRadius to its original size
+            d3.select(this).transition() // Add smooth transition
+              .duration(100)
+              .attr("d", d3.arc()
+                  .innerRadius(innerRadius)
+                  .outerRadius(d => y(d.Deaths))
+                  .startAngle(d => x(d.State))
+                  .endAngle(d => x(d.State) + x.bandwidth())
+                  .padAngle(0.01)
+                  .padRadius(innerRadius)
+              );
+        });
 
   // Add the labels
   svg.append("g")
