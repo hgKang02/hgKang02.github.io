@@ -67,6 +67,28 @@ d3.csv("https://raw.githubusercontent.com/hgKang02/hgKang02.github.io/master/CS4
           .endAngle(d => x(d.State) + x.bandwidth())
           .padAngle(0.01)
           .padRadius(innerRadius))
+          .on("mouseover", function(event, d) {
+                    // Increase the outerRadius to make the arc larger
+                    d3.select(this).attr("d", d3.arc()
+                        .innerRadius(innerRadius)
+                        .outerRadius(d => y(d.Deaths) + 20) // Increase the outer radius by 20
+                        .startAngle(d => x(d.State))
+                        .endAngle(d => x(d.State) + x.bandwidth())
+                        .padAngle(0.01)
+                        .padRadius(innerRadius)
+                    );
+                })
+                .on("mouseout", function(event, d) {
+                    // Restore the outerRadius to its original size
+                    d3.select(this).attr("d", d3.arc()
+                        .innerRadius(innerRadius)
+                        .outerRadius(d => y(d.Deaths))
+                        .startAngle(d => x(d.State))
+                        .endAngle(d => x(d.State) + x.bandwidth())
+                        .padAngle(0.01)
+                        .padRadius(innerRadius)
+                    );
+                });
 
   // Add the labels
   svg.append("g")
