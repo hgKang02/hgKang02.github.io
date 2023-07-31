@@ -101,7 +101,7 @@ d3.csv("https://raw.githubusercontent.com/hgKang02/hgKang02.github.io/master/CS4
         .attr("cx", d => x(+d.Year))
         .attr("cy", d => y(+d.Deaths))
         .attr("r", 7)
-        .style("fill", function{d} {
+        .style("fill", function(d) {
             if (d.Year == 2014 || d.Year == 2015) {
                 return "#6495ED"
             } else {
@@ -117,13 +117,13 @@ d3.csv("https://raw.githubusercontent.com/hgKang02/hgKang02.github.io/master/CS4
             .classed("clicked", false)
             .transition()
             .duration(100)
-            .attr("r", "11")
+            .attr("r", 11)
         } else {
             svg.selectAll("path.clicked")
           .classed("clicked", false)
           .transition()
           .duration(100)
-          .attr("r", "7")
+          .attr("r", 7)
         }
 
             tooltip.style("opacity", 1)
