@@ -101,9 +101,25 @@ d3.csv("https://raw.githubusercontent.com/hgKang02/hgKang02.github.io/master/CS4
         .attr("cx", d => x(+d.Year))
         .attr("cy", d => y(+d.Deaths))
         .attr("r", 7)
-        .style("fill", "#69b3a2")
+        .style("fill", "#82E0AA")
         .on("click", function(event, d) {
             const clickedBar = d3.select(this);
+
+        if (clickedBar.classed("clicked")) {
+        
+            clickedBar
+            .classed("clicked", false)
+            .transition()
+            .duration(100)
+            .attr("r", "11")
+        } else {
+            svg.selectAll("path.clicked")
+          .classed("clicked", false)
+          .transition()
+          .duration(100)
+          .attr("d", "7")
+        }
+
             tooltip.style("opacity", 1)
         .html("Year: " + d.Year + "<br>Rate: " + d.Deaths)
         .style("left", (event.pageX + 10) + "px")
