@@ -14,9 +14,6 @@
     <button onclick="window.location.href='https://hgKang02.github.io/CS416_narrative_visualization/last.html';">Texas Details</button>
   </div>
     <p> The chart used the data from https://efsgv.org/state/texas/. You can see more details by visiting the link.
-    <br> This page mostly focuses on showing the details of Texas gun violation.
-    <br> By using the dropdown box, you can select which rate you want to see.
-    <br> Moreover, by clicking the circles, you can see the numerical details for that year.
     </p>
   <select id="selectButton"></select>
 
@@ -44,9 +41,9 @@
     .style("border-radius", "6px")
 
 
-const margin = {top: 100, right: 100, bottom: 30, left: 30},
+const margin = {top: 10, right: 30, bottom: 40, left: 100},
     width = 500,
-    height = 550 - margin.top - margin.bottom;
+    height = 550;
 
 
 const svg = d3.select("#my_dataviz")
