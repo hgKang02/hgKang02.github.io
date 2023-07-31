@@ -14,13 +14,38 @@
     <button onclick="window.location.href='https://hgKang02.github.io/CS416_narrative_visualization/last.html';">Texas Details</button>
   </div>
     <p> The chart used the data from https://efsgv.org/state/texas/. You can see more details by visiting the link.
+    <br> This page mostly focuses on showing the details of Texas gun violation.
+    <br> By using the dropdown box, you can select which rate you want to see.
+    <br> Moreover, by clicking the circles, you can see the numerical details for that year.
     </p>
+    <div class = "annotation">
+    We can see that the total death rate and the suicide rate increased meaningly during 2014 and 2015.
+    <br> However, the overall trend between homicide and suicide rate seemed to be different.
+    </div>
+    <span class="arrow">&#8593;</span>
   <select id="selectButton"></select>
 
   <style>
     .tooltip {
       text-wrap: normal;
       font-size: 12px;
+    }
+    .arrow {
+        position: absolute;
+        top: 440px;
+        left: 420px;
+        color: black;
+        width: '300px';
+        height: '300px';
+        transform: translate(-50%, -50%);
+        font-size: 48px;
+    }
+    .annotation {
+        position: absolute;
+        top: 480px;
+        left: 400px;
+        color: black;
+        transform: translate(-50%, -50%);
     }
   </style>
 
@@ -41,7 +66,7 @@
     .style("border-radius", "6px")
 
 
-const margin = {top: 10, right: 30, bottom: 40, left: 100},
+const margin = {top: 10, right: 30, bottom: 40, left: 0},
     width = 500,
     height = 550;
 
