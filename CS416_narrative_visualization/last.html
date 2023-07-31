@@ -41,8 +41,8 @@
 
 
 const margin = {top: 10, right: 100, bottom: 30, left: 30},
-    width = 600,
-    height = 800;
+    width = 500,
+    height = 550;
 
 // append the svg object to the body of the page
 const svg = d3.select("#my_dataviz")
@@ -145,7 +145,9 @@ d3.csv("https://raw.githubusercontent.com/hgKang02/hgKang02.github.io/master/CS4
         update(selectedOption)
     })
 
-})
+}).catch(function(error) {
+  console.log("Error loading the CSV file:", error);
+});
 </script>
 </body>
 </html>
