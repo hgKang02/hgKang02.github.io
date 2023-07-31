@@ -117,13 +117,13 @@ d3.csv("https://raw.githubusercontent.com/hgKang02/hgKang02.github.io/master/CS4
             .classed("clicked", false)
             .transition()
             .duration(100)
-            .attr("r", 11)
+            .attr("r", "11")
         } else {
             svg.selectAll("path.clicked")
           .classed("clicked", false)
           .transition()
           .duration(100)
-          .attr("r", 7)
+          .attr("r", "7")
         }
 
             tooltip.style("opacity", 1)
