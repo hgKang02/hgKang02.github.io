@@ -13,7 +13,10 @@
     <button onclick="window.location.href='https://hgKang02.github.io/CS416_narrative_visualization/states.html';">U.S. States</button>
     <button onclick="window.location.href='https://hgKang02.github.io/CS416_narrative_visualization/last.html';">Texas Details</button>
   </div>
-
+    <p> The chart used the data from https://efsgv.org/state/texas/. You can see more details by visiting the link.
+    <br> This page mostly focuses on showing the details of Texas gun violation.
+    <br> By using the dropdown box, you can select which rate you want to see.
+    <br> Moreover, by clicking the circles, you can see the numerical details for that year.
   <select id="selectButton"></select>
 
   <style>
@@ -40,11 +43,11 @@
     .style("border-radius", "6px")
 
 
-const margin = {top: 10, right: 100, bottom: 30, left: 30},
+const margin = {top: 100, right: 100, bottom: 30, left: 30},
     width = 500,
-    height = 550;
+    height = 550 - margin.top - margin.bottom;
 
-// append the svg object to the body of the page
+
 const svg = d3.select("#my_dataviz")
   .append("svg")
     .attr("width", width + margin.left + margin.right)
@@ -52,12 +55,11 @@ const svg = d3.select("#my_dataviz")
   .append("g")
     .attr("transform",`translate(${margin.left},${margin.top})`);
 
-//Read the data
+
 d3.csv("https://raw.githubusercontent.com/hgKang02/hgKang02.github.io/master/CS416_narrative_visualization/last.csv").then(function(data) {
 
     const allGroup = ["Deaths", "Suicide", "Homicide"]
 
-    // add the options to the button
     d3.select("#selectButton")
       .selectAll('myOptions')
      	.data(allGroup)
@@ -101,7 +103,13 @@ d3.csv("https://raw.githubusercontent.com/hgKang02/hgKang02.github.io/master/CS4
         .attr("cx", d => x(+d.Year))
         .attr("cy", d => y(+d.Deaths))
         .attr("r", 7)
-        .style("fill", "#82E0AA")
+        .style("fill", function{d} {
+            if (d.Year == 2014 || d.Year == 2015) {
+                return "#6495ED"
+            } else {
+                return "#82E0AA"
+            }
+        })
         .on("click", function(event, d) {
             const clickedBar = d3.select(this);
 
@@ -111,13 +119,13 @@ d3.csv("https://raw.githubusercontent.com/hgKang02/hgKang02.github.io/master/CS4
             .classed("clicked", false)
             .transition()
             .duration(100)
-            .attr("r", "11")
+            .attr("r", 11)
         } else {
             svg.selectAll("path.clicked")
           .classed("clicked", false)
           .transition()
           .duration(100)
-          .attr("d", "7")
+          .attr("r", 7)
         }
 
             tooltip.style("opacity", 1)
