@@ -19,5 +19,3 @@ Currently, I am working at the FOrmally Certified Automation and Learning (FOCAL
 - **[May. 2023]** Started as Undergrad RA at UIUC’s FOCAL Lab
 
 {% include_relative _includes/publications.md %}
-
-{% include_relative _includes/services.md %}
