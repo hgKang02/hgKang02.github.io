@@ -13,5 +13,5 @@ main:
     authors: Jason Vega, Junsheng Huang*, Gaokai Zhang*, <strong>Hangoo Kang*</strong>, Minjia Zhang, Gagandeep Singh
     pdf: https://arxiv.org/pdf/2411.02785
     code: https://github.com/uiuc-focal-lab/stochastic-monkeys
-    notes: Under Review
+    notes: Under Review (* indicates equal contribution)
     image: ./assets/img/Stochastic_Monkeys_image.png
