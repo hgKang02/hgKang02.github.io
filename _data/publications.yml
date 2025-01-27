@@ -1,6 +1,6 @@
 main:
 
-  - title: SynCode: LLM Generation with Grammar Augmentation
+  - title: "SynCode: LLM Generation with Grammar Augmentation"
     authors: Shubham Ugare, Tarun Suresh, <strong>Hangoo Kang</strong>, Sasa Misailovic, Gagandeep Singh
     # conference_short: MICCAI
     # conference: International Conference on Medical Image Computing and Computer-Assisted Intervention <strong>(MICCAI)</strong>, 2023.
@@ -9,13 +9,9 @@ main:
     image: ./assets/img/SynCode_image.png
     notes: Under Review
 
-  - title: Stochastic Monkeys at Play: Random Augmentations Cheaply Break LLM Safety Alignment
+  - title: "Stochastic Monkeys at Play: Random Augmentations Cheaply Break LLM Safety Alignment"
     authors: Jason Vega, Junsheng Huang*, Gaokai Zhang*, <strong>Hangoo Kang*</strong>, Minjia Zhang, Gagandeep Singh
-    # conference_short: CVPR
-    # conference: IEEE/CVF Conference on Computer Vision and Pattern Recognition <strong>(CVPR)</strong>, 2020.
     pdf: https://arxiv.org/pdf/2411.02785
     code: https://github.com/uiuc-focal-lab/stochastic-monkeys
-    # page: https://class-il.mpi-inf.mpg.de/mnemonics/
-    # bibtex: https://class-il.mpi-inf.mpg.de/mnemonics/
     notes: Under Review
     image: ./assets/img/Stochastic_Monkeys_image.png
