@@ -1,5 +1,24 @@
 main:
 
+  - title: "TRAP: Targeted Redirecting of Agentic Preferences"
+    authors: <strong>Hangoo Kang*</strong>, Jehyeok Yeon*, Gagandeep Singh
+    # conference_short: MICCAI
+    # conference: International Conference on Medical Image Computing and Computer-Assisted Intervention <strong>(MICCAI)</strong>, 2023.
+    pdf: https://arxiv.org/pdf/2505.23518
+    code: https://github.com/hgKang02/TRAP
+    image: ./assets/img/TRAP_image.png
+    notes: NeurIPS 2025
+
+  - title: "Learning a Pessimistic Reward Model in RLHF"
+    authors: <strong>Hangoo Kang*</strong>, Yinglun Xu*, Tarun Suresh, Yuxuan Wan, Gagandeep Singh
+    # conference_short: MICCAI
+    # conference: International Conference on Medical Image Computing and Computer-Assisted Intervention <strong>(MICCAI)</strong>, 2023.
+    pdf: https://arxiv.org/pdf/2505.20556
+    code: https://github.com/yuxuanw8/PET
+    image: ./assets/img/PET_image.png
+    notes: ALERT@NeurIPS 2025
+
+
   - title: "SynCode: LLM Generation with Grammar Augmentation"
     authors: Shubham Ugare, Tarun Suresh, <strong>Hangoo Kang</strong>, Sasa Misailovic, Gagandeep Singh
     # conference_short: MICCAI
@@ -7,7 +26,7 @@ main:
     pdf: https://arxiv.org/pdf/2403.01632
     code: https://github.com/uiuc-focal-lab/syncode
     image: ./assets/img/SynCode_image.png
-    notes: Under Review
+    notes: TMLR 2024
 
   - title: "Stochastic Monkeys at Play: Random Augmentations Cheaply Break LLM Safety Alignment"
     authors: Jason Vega, Junsheng Huang*, Gaokai Zhang*, <strong>Hangoo Kang*</strong>, Minjia Zhang, Gagandeep Singh
