@@ -1,7 +1,24 @@
-_site
-.sass-cache
+# Build outputs
+dist/
+.vite/
+
+# Dependencies
+node_modules/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editor / OS
+.DS_Store
+.vscode/
+.idea/
+
+# Legacy Jekyll artifacts (kept ignored in case the archive branch is checked out)
+_site/
+.sass-cache/
+.jekyll-cache/
+.bundle/
+vendor/
 Gemfile.lock
 *.gem
-.DS_Store
-.jekyll-cache
-git-update.sh
