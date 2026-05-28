@@ -86,6 +86,15 @@
   margin: 0;
 }
 
+.pub-authors .pub-me {
+  color: #000;
+  font-weight: 700;
+}
+
+[data-theme="dark"] .pub-authors .pub-me {
+  color: #fff;
+}
+
 .pub-venue {
   font-size: 14px;
   color: var(--text-tertiary);

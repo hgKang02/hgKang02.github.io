@@ -2,6 +2,19 @@ import "./Publications.css";
 import publications from "../../data/publications";
 import { Link } from "react-router-dom";
 
+// Bold "Hangoo Kang" wherever it appears in the author string,
+// optionally swallowing a trailing * so the asterisk stays attached.
+const renderAuthors = (authors) => {
+  const parts = authors.split(/(Hangoo Kang\*?)/g);
+  return parts.map((part, i) =>
+    /^Hangoo Kang\*?$/.test(part) ? (
+      <strong className="pub-me" key={i}>{part}</strong>
+    ) : (
+      <span key={i}>{part}</span>
+    )
+  );
+};
+
 const Publications = () => {
   return (
     <section id="publications" className="publications">
@@ -22,7 +35,7 @@ const Publications = () => {
               </div>
               <div className="pub-body">
                 <h3 className="pub-title">{pub.title}</h3>
-                <p className="pub-authors">{pub.authors}</p>
+                <p className="pub-authors">{renderAuthors(pub.authors)}</p>
                 <p className="pub-venue">
                   <em>{pub.venue}</em>
                   {pub.status && <span className="pub-status"> ({pub.status})</span>}
