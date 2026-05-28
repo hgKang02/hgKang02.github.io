@@ -1,6 +1,10 @@
 const news = [
   {
     date: "May 2026",
+    text: "Received the *Silver Reviewer Award* from ICML 🎉",
+  },
+  {
+    date: "May 2026",
     text: "Submitted *Forty Shades of Blue* (quality-diversity alignment via mode-conditioned RL) to GenAICreativity @ ICML 2026.",
   },
   {

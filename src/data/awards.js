@@ -1,5 +1,9 @@
 const awards = [
   {
+    title: "ICML Silver Reviewer Award",
+    year: "2026",
+  },
+  {
     title: "UIUC Datathon — Honorable Mention (top 10/200+)",
     year: "2025",
   },

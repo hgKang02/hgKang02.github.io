@@ -16,6 +16,8 @@
   --accent: #0e5c5c;
   --accent-hover: #0a4848;
   --accent-soft: rgba(14, 92, 92, 0.08);
+  --venue: #9c6a00;
+  --venue-soft: rgba(156, 106, 0, 0.1);
   --border: rgba(26, 29, 28, 0.1);
   --border-strong: rgba(26, 29, 28, 0.18);
   --shadow: rgba(26, 29, 28, 0.03);
@@ -41,6 +43,8 @@
   --accent: #5ab5a8;
   --accent-hover: #76c5b9;
   --accent-soft: rgba(90, 181, 168, 0.12);
+  --venue: #d9a64a;
+  --venue-soft: rgba(217, 166, 74, 0.14);
   --border: rgba(240, 238, 229, 0.1);
   --border-strong: rgba(240, 238, 229, 0.2);
   --shadow: rgba(0, 0, 0, 0.3);
@@ -69,15 +73,15 @@ body {
   counter-increment: section;
   font-family: var(--font-serif);
   font-weight: 500;
-  font-size: 34px;
+  font-size: 30px;
   letter-spacing: -0.01em;
   color: var(--text-primary);
-  margin-bottom: 28px;
-  padding-bottom: 14px;
+  margin-bottom: 18px;
+  padding-bottom: 10px;
   border-bottom: 1px solid var(--border-strong);
   display: flex;
   align-items: baseline;
-  gap: 18px;
+  gap: 14px;
 }
 
 .section-title::before {
@@ -141,35 +145,49 @@ a:hover {
   border-radius: 4px !important;
 }
 
-/* Section backgrounds: alternate warm tints instead of grey */
+/* Section backgrounds: alternating warm tints for rhythm */
 .about,
-.news,
+.publications,
 .experience,
+.skills {
+  background: var(--bg-secondary) !important;
+}
+
+.news,
+.blogs,
 .education,
-.skills,
 .awards {
   background: var(--bg-primary) !important;
 }
 
-.publications {
-  background: var(--bg-secondary) !important;
-}
-
 /* Section vertical rhythm */
 section {
-  padding-top: 96px !important;
-  padding-bottom: 96px !important;
+  padding-top: 48px !important;
+  padding-bottom: 48px !important;
 }
 
 section:first-of-type {
   padding-top: 0 !important;
 }
 
-/* Constrain inner content for editorial reading width */
+/* Outer content width — generous on wide screens, comfortable padding on small */
 .section-inner {
-  max-width: 900px !important;
+  max-width: 1360px !important;
   margin: 0 auto;
-  padding: 0 32px;
+  padding: 0 16px;
+}
+
+/* Override per-section horizontal padding so the global rule above is the
+   single source of truth for left/right space. */
+section {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* Keep prose paragraphs readable even when the container is wide */
+.publications-note,
+.blogs-note {
+  max-width: 820px;
 }
 
 /* Pub link pills → small ghost buttons */

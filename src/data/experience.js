@@ -1,9 +1,9 @@
 const experience = [
   {
     role: "Graduate Researcher",
-    org: "Stanford Scaling Intelligence Lab & Hazy Research",
+    org: "Stanford Scaling Intelligence Lab",
     dates: "Aug 2025 – Present",
-    advisors: "Advised by Profs. Azalia Mirhoseini & Christopher Ré.",
+    advisors: "Advised by Profs. Azalia Mirhoseini.",
     details: [
       "Lead author on TRACE (+14.1 pts on τ²-Bench, +9.2 pts over GRPO at matched rollout budget).",
       "Co-author on Meta MSL / PyTorch blog releases on torchforge.",
