@@ -1,5 +1,9 @@
 const news = [
   {
+    date: "Jun 2026",
+    text: "*TRACE* received a [[Spotlight]] at AIWILD @ ICML 2026 🎉",
+  },
+  {
     date: "May 2026",
     text: "Received the *Silver Reviewer Award* from ICML 🎉",
   },

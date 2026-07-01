@@ -38,6 +38,9 @@ const Publications = () => {
                 <p className="pub-authors">{renderAuthors(pub.authors)}</p>
                 <p className="pub-venue">
                   <em>{pub.venue}</em>
+                  {pub.highlight && (
+                    <span className="pub-highlight">{pub.highlight}</span>
+                  )}
                   {pub.status && <span className="pub-status"> ({pub.status})</span>}
                 </p>
                 <div className="pub-links">

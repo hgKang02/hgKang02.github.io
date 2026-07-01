@@ -11,6 +11,7 @@ const publications = [
     authors: "Hangoo Kang*, Tarun Suresh*, Jon Saad-Falcon, Azalia Mirhoseini.",
     venue: "AIWILD @ ICML 2026",
     status: "under review for main conference",
+    highlight: "Spotlight",
     arxiv: "https://arxiv.org/abs/2604.05336",
     code: "https://github.com/ScalingIntelligence/TRACE",
     image: trace,

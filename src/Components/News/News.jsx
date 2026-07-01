@@ -1,10 +1,17 @@
 import "./News.css";
 import news from "../../data/news";
 
-// Render *italic* spans inline without pulling a markdown lib.
+// Render *italic* and [[red highlight pill]] spans inline.
 const renderText = (text) => {
-  const parts = text.split(/(\*[^*]+\*)/g);
+  const parts = text.split(/(\[\[[^\]]+\]\]|\*[^*]+\*)/g);
   return parts.map((part, i) => {
+    if (part.startsWith("[[") && part.endsWith("]]")) {
+      return (
+        <span key={i} className="news-highlight">
+          {part.slice(2, -2)}
+        </span>
+      );
+    }
     if (part.startsWith("*") && part.endsWith("*") && part.length > 2) {
       return <em key={i}>{part.slice(1, -1)}</em>;
     }

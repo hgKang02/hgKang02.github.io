@@ -111,6 +111,19 @@
   border-radius: 3px;
 }
 
+.pub-highlight {
+  color: var(--highlight);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: var(--highlight-soft);
+  padding: 2px 8px;
+  border-radius: 3px;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
 .pub-status {
   color: var(--text-muted);
   font-style: normal;

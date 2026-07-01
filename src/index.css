@@ -18,6 +18,8 @@
   --accent-soft: rgba(14, 92, 92, 0.08);
   --venue: #9c6a00;
   --venue-soft: rgba(156, 106, 0, 0.1);
+  --highlight: #b91c1c;
+  --highlight-soft: rgba(185, 28, 28, 0.1);
   --border: rgba(26, 29, 28, 0.1);
   --border-strong: rgba(26, 29, 28, 0.18);
   --shadow: rgba(26, 29, 28, 0.03);
@@ -45,6 +47,8 @@
   --accent-soft: rgba(90, 181, 168, 0.12);
   --venue: #d9a64a;
   --venue-soft: rgba(217, 166, 74, 0.14);
+  --highlight: #f87171;
+  --highlight-soft: rgba(248, 113, 113, 0.14);
   --border: rgba(240, 238, 229, 0.1);
   --border-strong: rgba(240, 238, 229, 0.2);
   --shadow: rgba(0, 0, 0, 0.3);

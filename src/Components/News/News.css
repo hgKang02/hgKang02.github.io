@@ -68,6 +68,19 @@
   font-weight: 500;
 }
 
+.news-highlight {
+  color: var(--highlight);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: var(--highlight-soft);
+  padding: 2px 8px;
+  border-radius: 3px;
+  margin: 0 2px;
+  vertical-align: middle;
+}
+
 @media (max-width: 600px) {
   .news {
     padding: 60px 16px;
