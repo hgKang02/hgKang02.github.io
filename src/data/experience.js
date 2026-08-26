@@ -21,6 +21,16 @@ const experience = [
     ],
   },
   {
+    role: "Research Intern",
+    org: "Bespoke Labs",
+    dates: "Jun 2026 – Present",
+    advisors: null,
+    details: [
+      "Benchmarking frontier models' sub-agent (orchestrator) management capability.",
+      "Built an automated data-generation pipeline for long-horizon tasks (200+ turns, 200K+ tokens).",
+    ],
+  },
+  {
     role: "Industry Collaborator",
     org: "Meta Superintelligence Lab (PyTorch team)",
     dates: "Aug 2025 – Feb 2026",
