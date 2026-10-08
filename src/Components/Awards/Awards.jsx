@@ -1,5 +1,6 @@
 import "./Awards.css";
 import awards from "../../data/awards";
+import activities from "../../data/activities";
 
 const Awards = () => {
   return (
@@ -15,10 +16,20 @@ const Awards = () => {
           ))}
         </ul>
         <div className="service-block">
-          <h3 className="service-title">Service</h3>
-          <p className="service-text">
-            Conference Reviewer: ICLR 2026, ICML 2026, COLM 2026, NeurIPS 2025.
-          </p>
+          <h3 className="service-title">Professional Activities</h3>
+          {activities.map((group) => (
+            <div className="service-group" key={group.role}>
+              <h4 className="service-role">{group.role}</h4>
+              <ul className="service-list">
+                {group.entries.map((entry) => (
+                  <li className="service-item" key={entry.venue}>
+                    <span>{entry.venue}</span>
+                    <span className="award-year">{entry.years}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
       </div>
     </section>

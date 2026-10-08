@@ -1,5 +1,13 @@
 const news = [
   {
+    date: "Oct 1, 2026",
+    text: "Started as a *fully funded Research Assistant* in Stanford's *Scaling Intelligence Lab*, advised by Prof. Azalia Mirhoseini.",
+  },
+  {
+    date: "Sept 2026",
+    text: "Released *Contrastive Language Model (CLM)*, an open-source System One model for fast decision-making. The project launch reached *1M views on X*.",
+  },
+  {
     date: "Jun 2026",
     text: "*TRACE* received a [[Spotlight]] at AIWILD @ ICML 2026 🎉",
   },

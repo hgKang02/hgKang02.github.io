@@ -1,10 +1,11 @@
 const experience = [
   {
-    role: "Graduate Researcher",
+    role: "Fully Funded Research Assistant",
     org: "Stanford Scaling Intelligence Lab",
-    dates: "Aug 2025 – Present",
-    advisors: "Advised by Profs. Azalia Mirhoseini.",
+    dates: "Oct 2026 – Present",
+    advisors: "Advised by Prof. Azalia Mirhoseini.",
     details: [
+      "Graduate researcher in the lab since Aug 2025.",
       "Lead author on TRACE (+14.1 pts on τ²-Bench, +9.2 pts over GRPO at matched rollout budget).",
       "Co-author on Meta MSL / PyTorch blog releases on torchforge.",
       "Drove Forge × Weaver verifier integration on 512-GPU CoreWeave cluster.",

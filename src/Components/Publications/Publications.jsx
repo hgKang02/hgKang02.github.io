@@ -19,12 +19,12 @@ const Publications = () => {
   return (
     <section id="publications" className="publications">
       <div className="section-inner">
-        <h2 className="section-title">Publications</h2>
+        <h2 className="section-title">Publications &amp; Research Projects</h2>
         <p className="publications-note">* = equal contribution.</p>
         <div className="pub-list">
           {publications.map((pub, i) => (
             <div className="pub-card" key={i}>
-              <div className="pub-thumb">
+              <div className={`pub-thumb${pub.imageFit === "contain" ? " pub-thumb-contain" : ""}`}>
                 {pub.image ? (
                   <img src={pub.image} alt={pub.title} />
                 ) : (
@@ -43,6 +43,7 @@ const Publications = () => {
                   )}
                   {pub.status && <span className="pub-status"> ({pub.status})</span>}
                 </p>
+                {pub.description && <p className="pub-description">{pub.description}</p>}
                 <div className="pub-links">
                   {pub.arxiv && (
                     <Link to={pub.arxiv} target="_blank" rel="noopener noreferrer" className="pub-link">
@@ -52,6 +53,21 @@ const Publications = () => {
                   {pub.code && (
                     <Link to={pub.code} target="_blank" rel="noopener noreferrer" className="pub-link">
                       code
+                    </Link>
+                  )}
+                  {pub.blog && (
+                    <Link to={pub.blog} target="_blank" rel="noopener noreferrer" className="pub-link">
+                      blog
+                    </Link>
+                  )}
+                  {pub.models && (
+                    <Link to={pub.models} target="_blank" rel="noopener noreferrer" className="pub-link">
+                      models
+                    </Link>
+                  )}
+                  {pub.project && (
+                    <Link to={pub.project} target="_blank" rel="noopener noreferrer" className="pub-link">
+                      project
                     </Link>
                   )}
                 </div>

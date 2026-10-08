@@ -22,7 +22,7 @@ const About = () => {
         <h2 className="section-title">About</h2>
         <div className="about-intro">
           <p>
-            I work in the <strong>Scaling Intelligence Lab</strong>, advised by
+            I am a <strong>fully funded Research Assistant</strong> in the <strong>Scaling Intelligence Lab</strong>, advised by
             Prof. <strong>Azalia Mirhoseini</strong>, on self-improving
             agentic training and scalable RL post-training — including{" "}
             <strong>TRACE</strong> (self-improving agents via contrastive

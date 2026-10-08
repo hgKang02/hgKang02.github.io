@@ -16,7 +16,7 @@ const Hero = () => {
             At the intersection of <span className="hero-accent">Self-Improving AI</span>, <span className="hero-accent">Scalable RL</span>, <span className="hero-accent">LLM Post-Training</span>, and <span className="hero-accent">MLSys</span>.
           </h1>
           <p className="hero-tagline">
-            Master&rsquo;s student in <strong>Computer Science</strong> at Stanford, advised by Prof. <strong>Azalia Mirhoseini</strong> in the <strong>Scaling Intelligence Lab</strong>. Fortunate to also work closely with Prof. Yejin Choi&rsquo;s <strong>xLab</strong>.
+            Master&rsquo;s student in <strong>Computer Science</strong> and <strong>fully funded Research Assistant</strong> at Stanford, advised by Prof. <strong>Azalia Mirhoseini</strong> in the <strong>Scaling Intelligence Lab</strong>. Fortunate to also work closely with Prof. Yejin Choi&rsquo;s <strong>xLab</strong>.
           </p>
           <div className="hero-schools">
             <div className="hero-school">
