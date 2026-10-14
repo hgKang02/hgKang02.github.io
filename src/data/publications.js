@@ -15,8 +15,8 @@ const publications = [
   {
     title: "ThunderSyncRL: Lossless Acceleration of Agentic Reinforcement Learning.",
     authors: "Seil Kang*, Hangoo Kang*, Tarun Suresh, Youngeun Kim, Shreyas Pimpalgaonkar, Seong Jae Hwang, Azalia Mirhoseini.",
-    venue: "arXiv preprint, 2026",
-    status: null,
+    venue: "LCFM @ NeurIPS 2026",
+    status: "Accepted",
     arxiv: "https://arxiv.org/abs/2610.05935",
     code: "https://github.com/seilk/thundersync",
     image: thundersync,
@@ -46,8 +46,8 @@ const publications = [
   {
     title: "Block Parallelism for Efficient Distributed Long-Context Diffusion Language Model Training.",
     authors: "Tarun Suresh*, Pranshu Chaturvedi*, Hangoo Kang*, Parth Shroff, Ishan S. Khare, Hermann Kumbong, Azalia Mirhoseini.",
-    venue: "arXiv preprint, 2026",
-    status: null,
+    venue: "LCFM @ NeurIPS 2026",
+    status: "Accepted",
     arxiv: "https://arxiv.org/abs/2609.19242",
     code: "https://github.com/ScalingIntelligence/Turbo-dLLM",
     image: blockParallelism,
@@ -56,8 +56,8 @@ const publications = [
   {
     title: "Training Hybrid Block Diffusion Language Models with Partial Bidirectionality.",
     authors: "Pranshu Chaturvedi, Parth Shroff, Tarun Suresh, Hangoo Kang, Kaiyue Wen.",
-    venue: "arXiv preprint, 2026",
-    status: null,
+    venue: "Non-AR Workshop @ COLM 2026",
+    status: "Accepted",
     arxiv: "https://arxiv.org/abs/2607.02805",
     image: hybridDiffusion,
     imageFit: "contain",
